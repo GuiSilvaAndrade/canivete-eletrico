@@ -1,0 +1,82 @@
+.power-triangle {
+  text-align: center; 
+  //border: solid 1px orange;
+  width: 350px;
+  margin: 0 auto;
+
+  h2 {
+    padding: 30px 0 20px 0;
+    font-weight: 600;
+  }
+
+  .container {
+    width: 150px;
+    margin: 0 auto;
+ 
+    .block-input {
+      padding-bottom: 15px;
+
+      .label {
+        font-family: var(--font-poppins);
+        font-size: 13px;
+      }
+
+      .input input {
+        width: 150px;
+        height: 40px;      
+        border-radius: 10px;
+        border: solid 2px var(--primary-color);
+        transition: 0.5s;
+        text-align: center;
+        font-size: 20px;
+        color: white;      
+        background: var(--secondary-color);
+      }
+
+      .input input:hover{
+        border: solid 2px var(--third-color);
+      }  
+      .input input:focus{
+        outline:none;
+        border: solid 2px var(--third-color);
+      }  
+    }
+  }
+
+  .block-radio {
+    text-align: left;
+
+    label {
+      font-size: 16px;
+      padding: 10px;        
+    }
+
+    input {
+      accent-color: var(--third-color)
+    }
+  }
+
+  button {
+    margin-top: 25px;
+    width: 350px;
+    height: 40px;
+    border-radius: 10px;
+  }
+
+  button:hover {
+    background: var(--third-color);
+    color: white;
+    cursor: pointer;
+  }
+
+  textarea {
+    width: 350px;
+    height: 100px;
+    margin-top: 25px;
+    background: var(--primary-color);
+    color: white;
+    font-size: 20px;
+    resize: none;
+    outline:none;    
+  }
+}
