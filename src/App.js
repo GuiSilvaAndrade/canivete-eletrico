@@ -1,12 +1,12 @@
-import Header from './components/Header'
-import PowerTriangle from './components/PowerTriangle';
+import Navbar from './components/Navbar';
+import { Outlet } from 'react-router-dom';
 
 
 function App() {
   return (
     <div>
-      <Header />
-      <PowerTriangle /> 
+      <Navbar />
+      <Outlet />      
     </div>
   );
 }
