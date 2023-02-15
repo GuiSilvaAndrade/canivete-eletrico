@@ -55,18 +55,15 @@ function TrianguloDePotencias() {
   .then(res => {
     const { corrente, potenciaAparente, potenciaReativa, erro, descricaoErro } = res.data[0]
     setSendToAPI() // Evita de ter que dar 2 cliques no botão para o textarea renderizar
-    console.log(dados)
-    console.log(res.data[0])
-    
-      if (erro) {
-        responseOne.current = `${descricaoErro}`
-        responseTwo.current = ''
-        responseThree.current = ''
-      } else {
-        responseOne.current = `Corrente: ${corrente} A`
-        responseTwo.current = `Potência aparente: ${potenciaAparente} W`
-        responseThree.current = `Potência reativa: ${potenciaReativa} VAR`
-      }
+    if (erro) {
+      responseOne.current = `${descricaoErro}`
+      responseTwo.current = ''
+      responseThree.current = ''
+    } else {
+      responseOne.current = `Corrente: ${corrente} A`
+      responseTwo.current = `Potência aparente: ${potenciaAparente} W`
+      responseThree.current = `Potência reativa: ${potenciaReativa} VAR`
+    }
   }).catch(err =>  {
     console.error(err);
   })
