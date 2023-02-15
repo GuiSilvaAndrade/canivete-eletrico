@@ -4,9 +4,13 @@ import { Outlet } from 'react-router-dom';
 
 function App() {
   return (
-    <div>
-      <Navbar />
-      <Outlet />      
+    <div className='layout-app'>
+      <div>
+        <Navbar />
+      </div>
+      <div>
+        <Outlet />   
+      </div>   
     </div>
   );
 }

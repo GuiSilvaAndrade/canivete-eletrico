@@ -1,11 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/global.scss'
+import './styles/pages.scss'
 import App from './App'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Home from './pages/Home';
-import PowerTriangle from './pages/PowerTriangle';
-import ErrorPage from './pages/ErrorPage'
+import HomePage from './pages/Default/HomePage';
+import ErrorPage from './pages/Default/ErrorPage'
+
+import TrianguloDePotencias from './pages/Calculos/TrianguloDePotencias';
+import LeiDeOhm from './pages/CalculosBasicos/LeiDeOhm';
+
 
 
 const router = createBrowserRouter([
@@ -16,11 +20,15 @@ const router = createBrowserRouter([
     children:[
       {
         path: "/",
-        element: <Home />
+        element: <HomePage />
       },
       {
         path: "/triangulo-de-potencias",
-        element: <PowerTriangle />
+        element: <TrianguloDePotencias />
+      },
+      {
+        path: "/lei-de-ohm",
+        element: <LeiDeOhm />
       }
     ]
   }

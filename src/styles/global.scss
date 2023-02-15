@@ -18,7 +18,14 @@
 }
 
 body {
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
   color: var(--fourth-color);
   font-family: var(--font-poppins);
 }
+
+.layout-app {
+  display: flex;
+}
+
+
+
