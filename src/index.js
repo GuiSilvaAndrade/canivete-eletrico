@@ -7,8 +7,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import HomePage from './pages/Default/HomePage';
 import ErrorPage from './pages/Default/ErrorPage'
 
-import TrianguloDePotencias from './pages/Calculos/TrianguloDePotencias';
+import TrianguloDePotencias from './pages/CalculosBasicos/TrianguloDePotencias';
 import LeiDeOhm from './pages/CalculosBasicos/LeiDeOhm';
+import ResistenciaEquivalente from './pages/CalculosBasicos/ResistenciaEquivalente'
 
 
 
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "/lei-de-ohm",
         element: <LeiDeOhm />
+      },
+      {
+        path: "/resistencia-equivalente",
+        element: <ResistenciaEquivalente />
       }
     ]
   }
