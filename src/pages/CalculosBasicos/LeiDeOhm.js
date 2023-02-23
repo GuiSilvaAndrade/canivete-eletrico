@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import api from '../../services/api';
 import Input from '../../components/Input'  
 
-function TrianguloDePotencias() {
+function LeiDeOhm() {
   const [sendToAPI, setSendToAPI] = useState()
   const [currentValue, setCurrentValue] = useState("")
   const [voltageValue, setVoltageValue] = useState("")
@@ -27,7 +27,7 @@ function TrianguloDePotencias() {
     setResistanceValue(e.target.value)
   }  
     
-  const dados = {
+  const data = {
     corrente: currentValue,
     resistencia: resistanceValue,
     tensao: voltageValue
@@ -37,11 +37,10 @@ function TrianguloDePotencias() {
   const responsePotencia = useRef() 
 
   useEffect(() => {
-    api.post('lei-de-ohm', dados)    
+    api.post('lei-de-ohm', data)    
   .then(res => {
     const { correnteCalculada, resistenciaCalculada, tensaoCalculada, potenciaCalculada, itemCalculo, error } = res.data[0]
     setSendToAPI() // Evita de ter que dar 2 cliques no botão para o textarea renderizar
-    console.log(res.data[0])
     if (itemCalculo !== "") {
       if (itemCalculo === "Tensão") {
         responsePrincipal.current = `Tensão: ${tensaoCalculada} V`
@@ -92,4 +91,4 @@ function TrianguloDePotencias() {
   </div>
 )}
 
-export default TrianguloDePotencias
+export default LeiDeOhm

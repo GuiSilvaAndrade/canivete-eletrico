@@ -2,6 +2,8 @@ import { useRef, useState } from 'react'
 import { useEffect } from 'react';
 import api from '../../services/api';
 import Input from '../../components/Input'  
+import InputRadio from '../../components/InputRadio'  
+import InputRadioDefaultChecker from '../../components/InputRadioDefaultChecked'  
 
 function TrianguloDePotencias() {
   const [sendToAPI, setSendToAPI] = useState('')
@@ -16,6 +18,7 @@ function TrianguloDePotencias() {
     fatorDePotencia: fatorPotencia,
     monofasico: radioInput
   }
+  
   const cleanAll = () => {
     setPowerValue('')
     setVoltageValue('')
@@ -76,22 +79,18 @@ function TrianguloDePotencias() {
     <h2 className='main-title'>Triângulo de Potências</h2>
     
     <div className='container-inputs'> 
+
       <div>
         <Input text={'Potência (W)'} value={powerValue} onChange={handleChangePowerValue} />
         <Input text={'Fator de Potência'} value={fatorPotencia} onChange={handleChangeFatorPotencia} />
       </div> 
 
       <div>
-        <Input text={'Tensão (V)'} value={voltageValue} onChange={handleChangeVoltageValue} />           
-        <div className='container-input-radio'>
-          <input onChange={monoChecked} type="radio" value="monofasico" name="rede" id='mono' defaultChecked/>
-          <label htmlFor='mono'>Monofásico</label>
-        </div>
-        <div className='container-input-radio'> 
-          <input onChange={triChecked} type="radio" value="trifasico" name="rede" id='tri' />
-          <label htmlFor='tri'>Trifásico</label>
-        </div>
+        <Input text={'Tensão (V)'} value={voltageValue} onChange={handleChangeVoltageValue} />       
+        <InputRadioDefaultChecker text={'Monofásico'} onChange={monoChecked} name ={'rede'} tag={'monofasico'}/>
+        <InputRadio text={'Trifásico'} onChange={triChecked} name ={'rede'} tag={'trifasico'}/>
       </div> 
+      
     </div>
     
     <div>

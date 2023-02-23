@@ -2,6 +2,8 @@ import { useRef, useState } from 'react'
 import { useEffect } from 'react';
 import api from '../../services/api';
 import Input from '../../components/Input'  
+import InputRadio from '../../components/InputRadio'  
+import InputRadioDefaultChecker from '../../components/InputRadioDefaultChecked'  
 
 function ResistenciaEquivalente() {
   const [sendToAPI, setSendToAPI] = useState()
@@ -77,25 +79,20 @@ function ResistenciaEquivalente() {
       <h2 className='main-title'>Resistência Equivalente</h2>    
       
       <div className='container-inputs'> 
+
         <div>
           <Input text={'Resistência 1 (Ω)'} value={res1} onChange={handleChangeRes1} />
           <Input text={'Resistência 2 (Ω)'} value={res2} onChange={handleChangeRes2} />        
           <Input text={'Resistência 3 (Ω)'} value={res3} onChange={handleChangeRes3} />
         </div> 
+
         <div>
           <Input text={'Resistência 4 (Ω)'} value={res4} onChange={handleChangeRes4} />        
-          <Input text={'Resistência 5 (Ω)'} value={res5} onChange={handleChangeRes5} />   
-
-        <div className='container-input-radio'>
-          <input onChange={serie} type="radio" value="serie" name="rede" id='serie' defaultChecked/>
-          <label htmlFor='serie'>Série</label>
-        </div>
-        <div className='container-input-radio'> 
-          <input onChange={paralelo} type="radio" value="paralelo" name="rede" id='paralelo' />
-          <label htmlFor='paralelo'>Paralelo</label>
-        </div>
-
+          <Input text={'Resistência 5 (Ω)'} value={res5} onChange={handleChangeRes5} /> 
+          <InputRadioDefaultChecker text={'Série'} onChange={serie} name={'label'} tag={'serie'}/>
+          <InputRadio text={'Paralelo'} onChange={paralelo} name={'label'} tag={'paralelo'}/>
         </div> 
+        
       </div>
       
       <div>

@@ -23,6 +23,10 @@ function Navbar() {
         <Link to="/triangulo-de-potencias">Triângulo de Potências</Link>
       </div>
 
+      <div className='navbar-link'>
+        <Link to="/consumo-de-energia">Consumo de Energia</Link>
+      </div>
+
 
 
       <h5>Cálculos</h5>

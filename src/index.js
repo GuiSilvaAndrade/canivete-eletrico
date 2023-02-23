@@ -4,12 +4,14 @@ import './styles/global.scss'
 import './styles/pages.scss'
 import App from './App'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
 import HomePage from './pages/Default/HomePage';
 import ErrorPage from './pages/Default/ErrorPage'
 
 import TrianguloDePotencias from './pages/CalculosBasicos/TrianguloDePotencias';
 import LeiDeOhm from './pages/CalculosBasicos/LeiDeOhm';
 import ResistenciaEquivalente from './pages/CalculosBasicos/ResistenciaEquivalente'
+import ConsumoDeEnergia from './pages/CalculosBasicos/ConsumoDeEnergia';
 
 
 
@@ -34,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/resistencia-equivalente",
         element: <ResistenciaEquivalente />
+      },
+      {
+        path: "/consumo-de-energia",
+        element: <ConsumoDeEnergia />
       }
     ]
   }

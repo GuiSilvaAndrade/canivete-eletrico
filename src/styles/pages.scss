@@ -38,10 +38,20 @@
       margin: 0 auto;  
       display: flex;   
       gap: 50px;     
-    }
 
-    //.container-responses{}
-  }
+      .container-radio-consumo{     
+
+        .container-radio-consumo-2{
+          display: flex;
+          padding: 8.8px 0;
+          
+          .container-input-radio {
+              width: 60px;
+            }
+        }
+      }
+    }    
+  }  
 }
 
 .label {
