@@ -8,10 +8,10 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import HomePage from './pages/Default/HomePage';
 import ErrorPage from './pages/Default/ErrorPage'
 
-import TrianguloDePotencias from './pages/CalculosBasicos/TrianguloDePotencias';
-import LeiDeOhm from './pages/CalculosBasicos/LeiDeOhm';
-import ResistenciaEquivalente from './pages/CalculosBasicos/ResistenciaEquivalente'
-import ConsumoDeEnergia from './pages/CalculosBasicos/ConsumoDeEnergia';
+import PowerTriangle from './pages/CalculosBasicos/PowerTriangle';
+import OhmsLaw from './pages/CalculosBasicos/OhmsLaw';
+import EquivalentResistance from './pages/CalculosBasicos/EquivalentResistance'
+import EnergyConsumption from './pages/CalculosBasicos/EnergyConsumption';
 
 
 
@@ -27,19 +27,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/triangulo-de-potencias",
-        element: <TrianguloDePotencias />
+        element: <PowerTriangle />
       },
       {
         path: "/lei-de-ohm",
-        element: <LeiDeOhm />
+        element: <OhmsLaw />
       },
       {
         path: "/resistencia-equivalente",
-        element: <ResistenciaEquivalente />
+        element: <EquivalentResistance />
       },
       {
         path: "/consumo-de-energia",
-        element: <ConsumoDeEnergia />
+        element: <EnergyConsumption />
       }
     ]
   }

@@ -3,24 +3,28 @@ import { useEffect } from 'react';
 import api from '../../services/api';
 import Input from '../../components/Input'  
 import InputRadio from '../../components/InputRadio'  
-import InputRadioDefaultChecker from '../../components/InputRadioDefaultChecked'  
+import InputRadioDefaultChecker from '../../components/InputRadioDefaultChecked'   
 
-function ConsumoDeEnergia() {
+function EnergyConsumption() {
+  // States
   const [sendToAPI, setSendToAPI] = useState()
   const [powerValue, setPowerValue] = useState("")
   const [HoursPerDayValue, setHourPerDayValue] = useState("")
   const [daysPerMonthValue, setDaysPerMonthValue] = useState("") 
 
+  // Necessary to use the variable inside the useEffect
   const selectUnit = useRef('kW')
-  const responseOne = useRef() // Necessário para usar o textarea dentro do useEffect
+  const responseOne = useRef() 
 
+  // Request to the back-end
   const data = {
-    potencia: powerValue,
-    unidade: selectUnit.current,
-    horasPorDia: HoursPerDayValue,
-    diasPorMes: daysPerMonthValue
+    power: powerValue,
+    unitOfMeasurement: selectUnit.current,
+    hoursPerDay: HoursPerDayValue,
+    daysPerMonth: daysPerMonthValue
   }
 
+  // Clean all fields
   const cleanAll = () => {
     setPowerValue('')
     setHourPerDayValue('')
@@ -28,6 +32,7 @@ function ConsumoDeEnergia() {
     responseOne.current = ''
   }
 
+  // Handle input change
   const handleChangePowerValue = (e) => {setPowerValue(e.target.value)}
   const handleChangeHoursPerDayValue = (e) => {setHourPerDayValue(e.target.value)}
   const handleChangeDaysPerMonthValue = (e) => {setDaysPerMonthValue(e.target.value)}  
@@ -38,13 +43,14 @@ function ConsumoDeEnergia() {
   const setHP = () => { selectUnit.current = "HP" }
   const setCV = () => { selectUnit.current = "CV" }   
   
+
+  // Connection with the back-end
   useEffect(() => {
-    api.post('consumo-energia', data)    
+    api.post('energy-consumption', data)    
   .then(res => {
-    const { consumo } = res.data[0]
-    setSendToAPI() // Evita de ter que dar 2 cliques no botão para o textarea renderizar
-    console.log(data)
-    responseOne.current = `Potência: ${consumo} kWh`     
+    const { response } = res.data[0] 
+    setSendToAPI() // Avoids having to make 2 clicks on the button
+    responseOne.current = response  
   }).catch(err =>  {
     console.error(err);
   })
@@ -96,4 +102,4 @@ function ConsumoDeEnergia() {
   </div>
 )}
 
-export default ConsumoDeEnergia
+export default EnergyConsumption
