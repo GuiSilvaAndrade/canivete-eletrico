@@ -27,6 +27,10 @@ function Navbar() {
         <Link to="/consumo-de-energia">Consumo de Energia</Link>
       </div>
 
+      <div className='navbar-link'>
+        <Link to="/unidade-de-potencia-ativa">Unidade de Potência Ativa</Link>
+      </div>
+
 
 
       <h5>Cálculos</h5>

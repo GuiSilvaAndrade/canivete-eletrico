@@ -12,6 +12,7 @@ import PowerTriangle from './pages/CalculosBasicos/PowerTriangle';
 import OhmsLaw from './pages/CalculosBasicos/OhmsLaw';
 import EquivalentResistance from './pages/CalculosBasicos/EquivalentResistance'
 import EnergyConsumption from './pages/CalculosBasicos/EnergyConsumption';
+import ActivePowerUnit from './pages/CalculosBasicos/ActivePowerUnit';
 
 
 
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "/consumo-de-energia",
         element: <EnergyConsumption />
+      },
+      {
+        path: "/unidade-de-potencia-ativa",
+        element: <ActivePowerUnit />
       }
     ]
   }
