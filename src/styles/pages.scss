@@ -1,14 +1,15 @@
 .container-main {
-  width: calc(100vw - 280px);  
-  height: calc(100vh - 50px);
-  background: var(--secondary-color);
+  width: calc(100vw - 250px);  
+  height: 100vh;
+  background: var(--background-color);
+  padding: 50px 0;
   
 
   .container-content {
     width: 500px;
     text-align: center;  
-    margin: 50px auto;
-    background: var(--primary-color);
+    margin: 0px auto;
+    background: var(--calc-color);
     border-radius: 20px;
     display: flex; 
     flex-direction: column;  
@@ -26,7 +27,7 @@
 
     .observation-title {
       font-size: 12px;
-      border: solid 1px var(--third-color);
+      border: solid 1px var(--purple-color);
       margin: 0 auto;
       padding: 5px 10px;
       margin-bottom: 30px;
@@ -63,22 +64,22 @@
   width: 150px;
   height: 35px;      
   border-radius: 10px;
-  border: solid 2px var(--primary-color);
+  border: solid 2px var(--calc-color);
   transition: 0.5s;
   text-align: center;
   font-size: 18px;
   color: white;      
-  background: var(--secondary-color);
+  background: var(--background-color);
   
 }
 
 .input input:hover{
-  border: solid 2px var(--third-color);
+  border: solid 2px var(--purple-color);
 }  
 
 .input input:focus{
   outline:none;
-  border: solid 2px var(--third-color);
+  border: solid 2px var(--purple-color);
 }
 
 input[type="number"]::-webkit-outer-spin-button,
@@ -100,7 +101,7 @@ input[type="number"]::-webkit-inner-spin-button {
   }
 
   input {
-    accent-color: var(--third-color)
+    accent-color: var(--purple-color)
   }
 }
 
@@ -119,7 +120,7 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .send-button:hover {
-  background: var(--third-color);
+  background: var(--purple-color);
   color: white;
   cursor: pointer;
 }

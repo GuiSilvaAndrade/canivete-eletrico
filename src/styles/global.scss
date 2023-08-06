@@ -2,9 +2,16 @@
 
 
 :root {
-  --primary-color: #373747;
-  --secondary-color: #232635;
-  --third-color: #a166ff;
+  --bg-light-color:  #f5f5f7;
+  --button-light-color: #fff;
+  --purple-color: #a166ff;
+
+
+
+  --background-color: #f5f5f7;  
+  --home-color: rgb(42,44,48);  
+  --calc-color: rgb(43,46,51);  
+  --purple-color: #a166ff;
   --fourth-color: #cdcdcd;
   --button-color: green;
   --font-poppins: 'Poppins', sans-serif;
@@ -18,13 +25,14 @@
 }
 
 body {
-  background-color: var(--secondary-color);
+  background-color: var(--bg-light-color);
   color: var(--fourth-color);
   font-family: var(--font-poppins);
 }
 
 .layout-app {
   display: flex;
+  flex-direction: column;
 }
 
 

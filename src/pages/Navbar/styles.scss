@@ -1,48 +1,24 @@
-.navbar{
-  width: 250px;
-  height: 100vh;
-  background-color: var(--secondary-color);
-  border-right: solid 1px var(--primary-color);
-
-  h5 {
-    font-size: 14px;
-    padding-left: 10px;
-    padding-top: 25px;
-  }
-  
-  .navbar-logo {
-    padding-top: 30px;
-    padding-bottom: 30px;
+.navbar {
+  background-color: var(--bg-light-color);
+  width: 100vw;
+  //position: absolute;
+  //margin-bottom: 1px;
+  .logo {
+    padding-top: 10px;
+    padding-bottom: 10px;
     text-align: center;
-
     a {   
-      padding-top: 30px;
-    padding-bottom: 30px;   
-      color: var(--fourth-color);
+      color: #6e6e73;
       text-decoration: none;
-      font-size: 22px;
+      font-size: 30px;
       font-weight: 800;
     }
-  }
-
-  .navbar-link {
-    a {
-      padding-left: 10px;
-      color: var(--fourth-color);
-      text-decoration: none;
-      font-size: 12px;
-    }
-    
-    a:hover {
-      color: var(--third-color);
-      text-decoration: none;
-      font-size: 12px;
+  
+    a:hover{
+      color:var(--purple-color)
     }
   }
 }
-
-
-
 
 
 

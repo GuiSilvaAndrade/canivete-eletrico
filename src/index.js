@@ -5,14 +5,16 @@ import './styles/pages.scss'
 import App from './App'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import HomePage from './pages/Default/HomePage';
+//import HomePage from './pages/Default/HomePage';
 import ErrorPage from './pages/Default/ErrorPage'
 
+import HomePage from './pages/HomePage';
 import PowerTriangle from './pages/CalculosBasicos/PowerTriangle';
 import OhmsLaw from './pages/CalculosBasicos/OhmsLaw';
 import EquivalentResistance from './pages/CalculosBasicos/EquivalentResistance'
 import EnergyConsumption from './pages/CalculosBasicos/EnergyConsumption';
 import ActivePowerUnit from './pages/CalculosBasicos/ActivePowerUnit';
+import LinearInterpolation from './pages/CalculosBasicos/LinearInterpolation'
 
 
 
@@ -45,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: "/unidade-de-potencia-ativa",
         element: <ActivePowerUnit />
+      },
+      {
+        path: "/interpolacao-linear",
+        element: <LinearInterpolation />
       }
     ]
   }
