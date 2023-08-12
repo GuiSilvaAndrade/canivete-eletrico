@@ -1,12 +1,10 @@
-function InputRadio ({ text, onChange, tag, name  }) {
+function InputRadio ({ text, onChange}) {
   return ( 
-    <div className='container-input-radio'>
-      <input onChange={onChange} type="radio" id={tag} name={name} />
-      <label htmlFor={tag}>{text}</label>
-    </div>
+    <div>
+      <input onChange={onChange} type="radio" id={text} name="label" />
+      <label htmlFor={text}>{text}</label>
+    </div>    
   )
 }
 
 export default InputRadio
-
-

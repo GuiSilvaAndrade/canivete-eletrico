@@ -4,49 +4,50 @@ import api from '../../services/api';
 import Input from '../../components/Input'  
 import InputRadio from '../../components/InputRadio'  
 import InputRadioDefaultChecker from '../../components/InputRadioDefaultChecked'  
+import Title from '../../components/Title';
 
 function EquivalentResistance() {
   const [sendToAPI, setSendToAPI] = useState()
-  const [res1, setRes1] = useState("")
-  const [res2, setRes2] = useState("")
-  const [res3, setRes3] = useState("")
-  const [res4, setRes4] = useState("")
-  const [res5, setRes5] = useState("")
-  const [radioInput, setRadioInput] = useState(true)
+  const [valueOne, setValueOne] = useState("")
+  const [valueTwo, setValueTwo] = useState("")
+  const [valueThree, setValueThree] = useState("") 
+  const [valueFour, setValueFour] = useState("") 
+  const [valueFive, setValueFive] = useState("") 
 
   // Necessary to use the variable inside the useEffect
+  const selectUnit = useRef('serie')
   const responseOne = useRef()
 
   // Request to the back-end
   const data = {
-    r1: res1,
-    r2: res2,
-    r3: res3,
-    r4: res4,
-    r5: res5,
-    serie: radioInput
+    r1: valueOne,
+    r2: valueTwo,
+    r3: valueThree,
+    r4: valueFour,
+    r5: valueFive,
+    type: selectUnit.current
   }
-
+ 
   // Clean all fields
   const cleanAll = () => {
-    setRes1('')
-    setRes2('')
-    setRes3('')
-    setRes4('')
-    setRes5('')
+    setValueOne('')
+    setValueTwo('')
+    setValueThree('')
+    setValueFour('')
+    setValueFive('')
     responseOne.current = ''
   }
 
   // Handle input change
-  const handleChangeRes1 = (e) => { setRes1(e.target.value) }
-  const handleChangeRes2 = (e) => { setRes2(e.target.value) }
-  const handleChangeRes3 = (e) => { setRes3(e.target.value) }
-  const handleChangeRes4 = (e) => { setRes4(e.target.value) }  
-  const handleChangeRes5 = (e) => { setRes5(e.target.value) }   
+  const handleValueOne = (e) => { setValueOne(e.target.value) }
+  const handleValueTwo = (e) => { setValueTwo(e.target.value) }
+  const handleValueThree = (e) => { setValueThree(e.target.value) }  
+  const handleValueFour = (e) => { setValueFour(e.target.value) }  
+  const handleValueFive = (e) => { setValueFive(e.target.value) }  
 
   // Set input radio variable
-  const serie = () => { setRadioInput(true) }
-  const parallel = () => { setRadioInput(false) }
+  const setRadioOne = () => { selectUnit.current = "serie" }
+  const setRadioTwo = () => { selectUnit.current = "parallel" }
       
   // Connection with the back-end
   useEffect(() => {
@@ -54,6 +55,8 @@ function EquivalentResistance() {
   .then(res => {
     const { response } = res.data[0]
     setSendToAPI() // Avoids having to make 2 clicks on the button
+    console.log(data)
+    console.log(res.data[0])
     responseOne.current = response    
   }).catch(err =>  {
     console.error(err);
@@ -64,29 +67,30 @@ function EquivalentResistance() {
   return (
   <div className='container-main'>
     <div className='container-content'>
-      <h2 className='main-title'>Resistência Equivalente</h2>    
+      <Title text={'Resistência Equivalente'} />      
       
       <div className='container-inputs'> 
-
         <div>
-          <Input text={'Resistência 1 (Ω)'} value={res1} onChange={handleChangeRes1} />
-          <Input text={'Resistência 2 (Ω)'} value={res2} onChange={handleChangeRes2} />        
-          <Input text={'Resistência 3 (Ω)'} value={res3} onChange={handleChangeRes3} />
-        </div> 
+          <Input text={'Resistência 1 (Ω)'} value={valueOne} onChange={handleValueOne} />
+          <Input text={'Resistência 2 (Ω)'} value={valueTwo} onChange={handleValueTwo} />        
+          <Input text={'Resistência 3 (Ω)'} value={valueThree} onChange={handleValueThree} />
+          <Input text={'Resistência 4 (Ω)'} value={valueFour} onChange={handleValueFour} />        
+          <Input text={'Resistência 5 (Ω)'} value={valueFive} onChange={handleValueFive} /> 
 
-        <div>
-          <Input text={'Resistência 4 (Ω)'} value={res4} onChange={handleChangeRes4} />        
-          <Input text={'Resistência 5 (Ω)'} value={res5} onChange={handleChangeRes5} /> 
-          <InputRadioDefaultChecker text={'Série'} onChange={serie} name={'label'} tag={'serie'}/>
-          <InputRadio text={'Paralelo'} onChange={parallel} name={'label'} tag={'paralelo'}/>
-        </div> 
-        
-      </div>
-      
+          <div className='container-radio'>
+            <div>
+              <InputRadioDefaultChecker text={'Série'} onChange={setRadioOne} />
+              <InputRadio text={'Paralelo'} onChange={setRadioTwo} />
+            </div>
+          </div>
+
+        </div>          
+      </div>  
+
       <div>
         <button className='send-button' onClick={setSendToAPI}>Calcular</button> 
         <button className='clear-button' onClick={cleanAll}>Limpar</button> 
-      </div>     
+      </div>    
 
       <div className='container-responses'>
         <p>{responseOne.current}</p>             

@@ -1,8 +1,8 @@
-function InputRadioDefaultChecked ({text, onChange, tag, name}) {
+function InputRadioDefaultChecked ({text, onChange}) {
   return ( 
-    <div className='container-input-radio'>
-      <input onChange={onChange} type="radio" id={tag} name={name} defaultChecked/>
-      <label htmlFor={tag}>{text}</label>
+    <div>
+      <input onChange={onChange} type="radio" id={text} name="label" defaultChecked/>
+      <label htmlFor={text}>{text}</label>
     </div>
   )
 }

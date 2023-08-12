@@ -10,11 +10,14 @@ import ErrorPage from './pages/Default/ErrorPage'
 
 import HomePage from './pages/HomePage';
 import PowerTriangle from './pages/CalculosBasicos/PowerTriangle';
-import OhmsLaw from './pages/CalculosBasicos/OhmsLaw';
 import EquivalentResistance from './pages/CalculosBasicos/EquivalentResistance'
 import EnergyConsumption from './pages/CalculosBasicos/EnergyConsumption';
 import ActivePowerUnit from './pages/CalculosBasicos/ActivePowerUnit';
 import LinearInterpolation from './pages/CalculosBasicos/LinearInterpolation'
+import ResistanceCalc from './pages/CalculosBasicos/ResistanceCalc';
+import VoltageCalc from './pages/CalculosBasicos/VoltageCalc';
+import CurrentCalc from './pages/CalculosBasicos/CurrentCalc';
+import PowerCalc from './pages/CalculosBasicos/PowerCalc';
 
 
 
@@ -33,8 +36,20 @@ const router = createBrowserRouter([
         element: <PowerTriangle />
       },
       {
-        path: "/lei-de-ohm",
-        element: <OhmsLaw />
+        path: "/resistencia",
+        element: <ResistanceCalc />
+      },
+      {
+        path: "/tensao",
+        element: <VoltageCalc />
+      },
+      {
+        path: "/corrente",
+        element: <CurrentCalc />
+      },
+      {
+        path: "/potencia",
+        element: <PowerCalc />
       },
       {
         path: "/resistencia-equivalente",

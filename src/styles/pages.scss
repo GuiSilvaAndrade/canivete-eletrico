@@ -1,29 +1,28 @@
 .container-main {
-  width: calc(100vw - 250px);  
-  height: 100vh;
-  background: var(--background-color);
-  padding: 50px 0;
-  
+  height: calc(100vh - 66px);
+  background: var(--background-color);  
 
   .container-content {
+    background-color: var(--button-light-color);
+    box-shadow: 0 5px 15px -3px rgba(0, 0, 0, 0.2);
     width: 500px;
     text-align: center;  
     margin: 0px auto;
-    background: var(--calc-color);
     border-radius: 20px;
     display: flex; 
     flex-direction: column;  
-    padding: 50px 0;
+    padding: 25px 0;
 
     .main-title {
       padding-bottom:30px;
       font-weight: 600;
+      color: var(--font-light-color);
     }
 
-    .main-title-with-observation {
-      padding-bottom:5px;
-      font-weight: 600;
-    }
+    // .main-title-with-observation {
+    //   padding-bottom:5px;
+    //   font-weight: 600;
+    // }
 
     .observation-title {
       font-size: 12px;
@@ -38,7 +37,7 @@
     .container-inputs{
       margin: 0 auto;  
       display: flex;   
-      gap: 50px;     
+      gap: 10px;   
 
       .container-radio-consumo{     
 
@@ -61,25 +60,26 @@
 }
 
 .input input {
-  width: 150px;
-  height: 35px;      
-  border-radius: 10px;
-  border: solid 2px var(--calc-color);
+  width: 450px;
+  height: 25px;      
+  border-radius: 5px;
+  border: solid 1px var(--calc-color);
   transition: 0.5s;
   text-align: center;
-  font-size: 18px;
-  color: white;      
+  font-size: 15px;
+  color: black;      
   background: var(--background-color);
+  border: 1px solid black;
   
 }
 
 .input input:hover{
-  border: solid 2px var(--purple-color);
+  border: solid 1px var(--purple-color);
 }  
 
 .input input:focus{
   outline:none;
-  border: solid 2px var(--purple-color);
+  border: solid 1px var(--purple-color);
 }
 
 input[type="number"]::-webkit-outer-spin-button,
@@ -89,21 +89,10 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .container-individual-input {
-  padding-bottom: 15px;   
+  padding: 8px 0;
+    
 }
 
-.container-input-radio {
-  text-align: left;
-
-  label {
-    font-size: 15px;
-    padding: 10px;        
-  }
-
-  input {
-    accent-color: var(--purple-color)
-  }
-}
 
 .send-button {  
   margin: 30px 10px 30px 0;    
@@ -130,3 +119,63 @@ input[type="number"]::-webkit-inner-spin-button {
   color: white;
   cursor: pointer;
 }
+
+.unit p{
+  width: 25px;
+  height: 25px;
+  margin: 17px 0;
+  border-radius: 5px;
+  background-color: var(--purple-color);
+}
+
+
+
+
+.container-radio {
+	display: flex;
+  padding: 5px 0 20px 0;
+}
+
+.container-radio div{
+  display: flex;
+	margin: 0 auto;
+}
+
+.container-radio input {
+	width: 0.1px;
+}
+
+.container-radio label {
+	background-color: #e4e4e4;
+	color: rgba(0, 0, 0, 0.6);
+	font-size: 14px;
+	text-align: center;
+	padding: 3px 10px;
+	margin-right: -1px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+	transition: all 0.2s ease-in-out;
+}
+
+.container-radio label:hover {
+	cursor: pointer;
+}
+
+.container-radio input:checked + label {
+	background-color: var(--purple-color);
+  color: white;
+	box-shadow: none;
+}
+
+.container-radio div div:first-of-type {
+  label{
+    border-radius: 5px 0 0 5px;
+  }
+}
+
+.container-radio div div:last-of-type {
+  label{
+    border-radius: 0 5px 5px 0;
+  }	
+}
+

@@ -4,13 +4,14 @@ import api from '../../services/api';
 import Input from '../../components/Input'  
 import InputRadio from '../../components/InputRadio'  
 import InputRadioDefaultChecker from '../../components/InputRadioDefaultChecked'   
+import Title from '../../components/Title';
 
-function EnergyConsumption() {
+function EnergyConsumption() { 
   // States
   const [sendToAPI, setSendToAPI] = useState()
-  const [powerValue, setPowerValue] = useState("")
-  const [HoursPerDayValue, setHourPerDayValue] = useState("")
-  const [daysPerMonthValue, setDaysPerMonthValue] = useState("") 
+  const [valueOne, setValueOne] = useState("")
+  const [valueTwo, setValueTwo] = useState("")
+  const [valueThree, setValueThree] = useState("")
 
   // Necessary to use the variable inside the useEffect
   const selectUnit = useRef('kW')
@@ -18,30 +19,30 @@ function EnergyConsumption() {
 
   // Request to the back-end
   const data = {
-    power: powerValue,
-    unitOfMeasurement: selectUnit.current,
-    hoursPerDay: HoursPerDayValue,
-    daysPerMonth: daysPerMonthValue
+    hoursPerDay: valueOne,
+    daysPerMonth: valueTwo,
+    power: valueThree,
+    unitOfMeasurement: selectUnit.current,    
   }
 
   // Clean all fields
   const cleanAll = () => {
-    setPowerValue('')
-    setHourPerDayValue('')
-    setDaysPerMonthValue('')
+    setValueOne('')
+    setValueTwo('')
+    setValueThree('')
     responseOne.current = ''
   }
 
   // Handle input change
-  const handleChangePowerValue = (e) => {setPowerValue(e.target.value)}
-  const handleChangeHoursPerDayValue = (e) => {setHourPerDayValue(e.target.value)}
-  const handleChangeDaysPerMonthValue = (e) => {setDaysPerMonthValue(e.target.value)}  
+  const handleValueOne = (e) => { setValueOne(e.target.value) }
+  const handleValueTwo = (e) => { setValueTwo(e.target.value) }
+  const handleValueThree = (e) => { setValueThree(e.target.value) }   
   
   // Set input radio variable
-  const setW = () => { selectUnit.current = "W" }
-  const setKW = () => { selectUnit.current = "kW" }
-  const setHP = () => { selectUnit.current = "HP" }
-  const setCV = () => { selectUnit.current = "CV" }   
+  const setRadioOne = () => { selectUnit.current = "kW" }
+  const setRadioTwo = () => { selectUnit.current = "W" }
+  const setRadioThree = () => { selectUnit.current = "HP" }
+  const setRadioFour = () => { selectUnit.current = "CV" } 
   
 
   // Connection with the back-end
@@ -59,36 +60,25 @@ function EnergyConsumption() {
   return (
   <div className='container-main'>
     <div className='container-content'>
-      <h2 className='main-title'>Consumo de Energia</h2>
+      <Title text={'Consumo de Energia'} />
       
       <div className='container-inputs'> 
         <div>
-          <Input text={'Potência'} value={powerValue} onChange={handleChangePowerValue} />
-          <Input text={'Horas por Dia'} value={HoursPerDayValue} onChange={handleChangeHoursPerDayValue} />          
-        </div> 
 
-        <div className='container-radio-consumo'>
-          <div className='container-radio-consumo-2'>
-            <div className='container-radio-consumo-3'>
+          <Input text={'Horas por Dia'} value={valueOne} onChange={handleValueOne} />
+          <Input text={'Dias por Mês'} value={valueTwo} onChange={handleValueTwo} />     
+          <Input text={'Potência'} value={valueThree} onChange={handleValueThree} />
 
-            <InputRadioDefaultChecker text={'kW'} onChange={setKW} name ={'label'} tag={'kw'}/>
-            <InputRadio text={'W'} onChange={setW} name ={'label'} tag={'w'}/>
-            
+          <div className='container-radio'>
+            <div>
+              <InputRadioDefaultChecker text={'kW'} onChange={setRadioOne} tag={'kw'}/>
+              <InputRadio text={'W'} onChange={setRadioTwo} tag={'w'}/>
+              <InputRadio text={'HP'} onChange={setRadioThree} tag={'hp'}/>
+              <InputRadio text={'CV'} onChange={setRadioFour} tag={'cv'}/>
             </div>
-
-            <div className='container-radio-consumo-3'>
-
-              <InputRadio text={'HP'} onChange={setHP} name={'label'} tag={'hp'}/>
-              <InputRadio text={'CV'} onChange={setCV} name={'label'} tag={'cv'}/>
-                
-            </div>
-
           </div>
-             
-          <Input text={'Dias por Mês'} value={daysPerMonthValue} onChange={handleChangeDaysPerMonthValue} />        
         </div>
-
-      </div>
+      </div> 
       
       <div>
         <button className='send-button' onClick={setSendToAPI}>Calcular</button>  

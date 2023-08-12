@@ -3,41 +3,42 @@ import { useEffect } from 'react';
 import api from '../../services/api';
 import Input from '../../components/Input'  
 import InputRadio from '../../components/InputRadio'  
-import InputRadioDefaultChecker from '../../components/InputRadioDefaultChecked'   
+import InputRadioDefaultChecker from '../../components/InputRadioDefaultChecked'  
+import Title from '../../components/Title';
 
 function ActivePowerUnit() {
   // States
   const [sendToAPI, setSendToAPI] = useState()
-  const [powerValue, setPowerValue] = useState("")
+  const [valueOne, setValueOne] = useState("")
 
   // Necessary to use the variable inside the useEffect
   const selectUnit = useRef('kW')
   const responseOne = useRef() 
   const responseTwo = useRef() 
-  const responseThree = useRef() 
+  const responseThree = useRef()  
 
   // Request to the back-end
-  const data = {
-    power: powerValue,
+  const data = { 
+    power: valueOne,
     unit: selectUnit.current
   }
 
   // Clean all fields
   const cleanAll = () => {
-    setPowerValue('')
+    setValueOne('')
     responseOne.current = ''
     responseTwo.current = ''
     responseThree.current = ''
   }
 
   // Handle input change
-  const handleChangePowerValue = (e) => {setPowerValue(e.target.value)}
+  const handleValueOne = (e) => {setValueOne(e.target.value)}
   
   // Set input radio variable
-  const setW = () => { selectUnit.current = "W" }
-  const setKW = () => { selectUnit.current = "kW" }
-  const setHP = () => { selectUnit.current = "HP" }
-  const setCV = () => { selectUnit.current = "CV" }    
+  const setRadioOne = () => { selectUnit.current = "kW" }
+  const setRadioTwo = () => { selectUnit.current = "W" }
+  const setRadioThree = () => { selectUnit.current = "HP" }
+  const setRadioFour = () => { selectUnit.current = "CV" }   
 
   // Connection with the back-end
   useEffect(() => {
@@ -45,8 +46,6 @@ function ActivePowerUnit() {
   .then(res => {
     const { response1, response2, response3 } = res.data[0] 
     setSendToAPI() // Avoids having to make 2 clicks on the button
-    console.log(data)
-    console.log(res.data[0])
     responseOne.current = response1 
     responseTwo.current = response2
     responseThree.current = response3
@@ -58,33 +57,21 @@ function ActivePowerUnit() {
   return (
   <div className='container-main'>
     <div className='container-content'>
-      <h2 className='main-title'>Unidade de Potência Ativa</h2>
+      <Title text={'Unidade de Potência Ativa'} />
       
       <div className='container-inputs'> 
-        <div>
-          <Input text={'Potência'} value={powerValue} onChange={handleChangePowerValue} />    
+        <div>          
+          <Input text={'Potência'} value={valueOne} onChange={handleValueOne} /> 
+
+           <div className='container-radio'>
+              <div>
+                <InputRadioDefaultChecker text={'kW'} onChange={setRadioOne} />
+                <InputRadio text={'W'} onChange={setRadioTwo} />
+                <InputRadio text={'HP'} onChange={setRadioThree} />
+                <InputRadio text={'CV'} onChange={setRadioFour} />          
+              </div>
+            </div>
         </div> 
-
-        <div className='container-radio-consumo'>
-          <div className='container-radio-consumo-2'>
-            <div className='container-radio-consumo-3'>
-
-            <InputRadioDefaultChecker text={'kW'} onChange={setKW} name ={'label'} tag={'kw'}/>
-            <InputRadio text={'W'} onChange={setW} name ={'label'} tag={'w'}/>
-            
-            </div>
-
-            <div className='container-radio-consumo-3'>
-
-              <InputRadio text={'HP'} onChange={setHP} name={'label'} tag={'hp'}/>
-              <InputRadio text={'CV'} onChange={setCV} name={'label'} tag={'cv'}/>
-                
-            </div>
-
-          </div>
-                
-        </div>
-
       </div>
       
       <div>
@@ -97,6 +84,7 @@ function ActivePowerUnit() {
         <p>{responseTwo.current}</p>             
         <p>{responseThree.current}</p>             
       </div>
+
     </div>
   </div>
 )}

@@ -3,47 +3,48 @@ import { useEffect } from 'react';
 import api from '../../services/api';
 import Input from '../../components/Input'  
 import InputRadio from '../../components/InputRadio'  
-import InputRadioDefaultChecker from '../../components/InputRadioDefaultChecked'  
+import InputRadioDefaultChecker from '../../components/InputRadioDefaultChecked' 
+import Title from '../../components/Title'; 
 
 function PowerTriangle() {
   // States
   const [sendToAPI, setSendToAPI] = useState('')
-  const [powerValue, setPowerValue] = useState('')
-  const [voltageValue, setVoltageValue] = useState('')
-  const [powerFactor, setPowerFactor] = useState('')
-  const [radioInput, setRadioInput] = useState(true)
+  const [valueOne, setValueOne] = useState("")
+  const [valueTwo, setValueTwo] = useState("")
+  const [valueThree, setValueThree] = useState("") 
 
   // Necessary to use the variable inside the useEffect
+  const selectUnit = useRef('mono')
   const responseOne = useRef()
   const responseTwo = useRef()
   const responseThree = useRef()
 
   // Request to the back-end
   const data = {
-    power: powerValue,
-    voltage: voltageValue,
-    powerFactor: powerFactor,
-    monophasic: radioInput
+    power: valueOne,
+    powerFactor: valueTwo,
+    voltage: valueThree,
+    type: selectUnit.current
   }
   
   // Clean all fields
   const cleanAll = () => {
-    setPowerValue('')
-    setVoltageValue('')
-    setPowerFactor('')
+    setValueOne('')
+    setValueTwo('')
+    setValueThree('')
     responseOne.current = ''
     responseTwo.current = ''
     responseThree.current = ''
   }
 
   // Handle input change
-  const handleChangePowerValue = (e) => { setPowerValue(e.target.value) }
-  const handleChangeVoltageValue = (e) => { setVoltageValue(e.target.value) }
-  const handleChangePowerFactor = (e) => { setPowerFactor(e.target.value) }
+  const handleValueOne = (e) => { setValueOne(e.target.value) }
+  const handleValueTwo = (e) => { setValueTwo(e.target.value) }
+  const handleValueThree = (e) => { setValueThree(e.target.value) }  
   
   // Set input radio variable
-  const monophasicChecked = () => { setRadioInput(true) }
-  const triphasicChecked = () => {  setRadioInput(false) }
+  const setRadioOne = () => { selectUnit.current = "monophasic" }
+  const setRadioTwo = () => { selectUnit.current = "triphasic" }
   
   // Connection with the back-end
   useEffect(() => {
@@ -62,22 +63,21 @@ function PowerTriangle() {
 
   return (<div className='container-main teste'>
   <div className='container-content'>
-
-    <h2 className='main-title'>Triângulo de Potências</h2>
+  <Title text={'Triângulo de Potências'} />
     
     <div className='container-inputs'> 
+      <div>        
+        <Input text={'Potência (W)'} value={valueOne} onChange={handleValueOne} />
+        <Input text={'Fator de Potência'} value={valueTwo} onChange={handleValueTwo} />
+        <Input text={'Tensão (V)'} value={valueThree} onChange={handleValueThree} /> 
 
-      <div>
-        <Input text={'Potência (W)'} value={powerValue} onChange={handleChangePowerValue} />
-        <Input text={'Fator de Potência'} value={powerFactor} onChange={handleChangePowerFactor} />
+        <div className='container-radio'>
+          <div>
+          <InputRadioDefaultChecker text={'Monofásico'} onChange={setRadioOne} />
+          <InputRadio text={'Trifásico'} onChange={setRadioTwo} />
+          </div>
+        </div>
       </div> 
-
-      <div>
-        <Input text={'Tensão (V)'} value={voltageValue} onChange={handleChangeVoltageValue} />       
-        <InputRadioDefaultChecker text={'Monofásico'} onChange={monophasicChecked} name ={'rede'} tag={'monofasico'}/>
-        <InputRadio text={'Trifásico'} onChange={triphasicChecked} name ={'rede'} tag={'trifasico'}/>
-      </div> 
-      
     </div>
     
     <div>

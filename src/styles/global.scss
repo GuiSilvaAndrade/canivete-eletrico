@@ -5,6 +5,7 @@
   --bg-light-color:  #f5f5f7;
   --button-light-color: #fff;
   --purple-color: #a166ff;
+  --font-light-color: #6e6e73;
 
 
 
@@ -26,7 +27,7 @@
 
 body {
   background-color: var(--bg-light-color);
-  color: var(--fourth-color);
+  color: black;
   font-family: var(--font-poppins);
 }
 
@@ -34,6 +35,4 @@ body {
   display: flex;
   flex-direction: column;
 }
-
-
 

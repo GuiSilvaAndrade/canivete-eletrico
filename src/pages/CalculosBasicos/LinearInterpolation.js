@@ -4,6 +4,7 @@ import api from '../../services/api';
 import Input from '../../components/Input'  
 import InputRadio from '../../components/InputRadio'  
 import InputRadioDefaultChecker from '../../components/InputRadioDefaultChecked'  
+import Title from '../../components/Title';
 
 function PowerTriangle() {
   // States
@@ -65,15 +66,11 @@ function PowerTriangle() {
 
     <h2 className='main-title'>Interpolação Linear</h2>
     
-    <div className='container-inputs'> 
-      
+    <div className='container-inputs'>       
       <div>
         <Input text={'Valor mínimo equipamento'} value={powerValue} onChange={handleChangePowerValue} />
         <Input text={'Valor mínimo real'} value={powerFactor} onChange={handleChangePowerFactor} />
-        <Input text={'Valor a ser interpolado'} value={powerFactor} onChange={handleChangePowerFactor} />
-      </div> 
-
-      <div>
+        <Input text={'Valor a ser interpolado'} value={powerFactor} onChange={handleChangePowerFactor} />      
         <Input text={'Valor máximo equipamento'} value={voltageValue} onChange={handleChangeVoltageValue} />       
         <Input text={'Valor máximo real'} value={voltageValue} onChange={handleChangeVoltageValue} />       
         <Input text={'Resultado'} value={voltageValue} onChange={handleChangeVoltageValue} />       
